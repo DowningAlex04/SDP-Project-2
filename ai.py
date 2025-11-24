@@ -6,10 +6,7 @@ import os
 import sys
 
 class Page(BaseModel):
-    category: str 
-    # title: str
-    # link: str
-    # summary: str
+    category: str # Category:{topic}
 
 
 client = genai.Client()
@@ -29,31 +26,10 @@ while True:
         question,
         config=GenerateContentConfig(
             system_instruction=prompt_instructions,
+            response_mime_type='application/json',
             response_schema=Page
         )
     )
     temppage = response.parsed
     print(temppage.category)
 
-# recipe = response.parsed  # Pydantic Recipe object 
-# print(f'How to make {recipe.recipe_name}')  # Can use fields to access data 
-# print('*** You will need these ingredients ***')
-# for ingredient in recipe.ingredients:
-#     print(ingredient)
-# print('*** And here are the instructions ***')
-# for step in recipe.instructions:
-#     print(step)
-
-# print()
-
-# # Or, if you want dictionaries and lists 
-# recipe_dictionary = response.parsed.model_dump()
-
-# pprint(recipe_dictionary)
-# print('*** You will need these ingredients ***')
-# print(recipe_dictionary['recipe_name'])
-# for ingredient in recipe_dictionary['ingredients']:
-#     print(ingredient)
-# print('*** And here are the instructions ***')
-# for step in recipe_dictionary['instructions']:
-#     print(step)

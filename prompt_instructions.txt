@@ -1,1 +1,1 @@
-use the prompt to genorate a category that can be used with the wikipedia API
+use the prompt to generate a category that can be used with the wikipedia API following the Wikipedia API format for categories. 
