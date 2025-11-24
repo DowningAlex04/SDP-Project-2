@@ -20,16 +20,16 @@ except:
     print('Missing System Instruction, check file path ')
     sys.exit()
 
-while True:
-    question = input("Enter your intrest > ")
-    response = chat.send_message(
-        question,
-        config=GenerateContentConfig(
-            system_instruction=prompt_instructions,
-            response_mime_type='application/json',
-            response_schema=Page
-        )
+
+question = input("Enter your intrest > ")
+response = chat.send_message(
+    question,
+    config=GenerateContentConfig(
+        system_instruction=prompt_instructions,
+        response_mime_type='application/json',
+        response_schema=Page
     )
-    temppage = response.parsed
-    print(temppage.category)
+)
+temppage = response.parsed
+print(temppage.category)
 
